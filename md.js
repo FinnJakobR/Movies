@@ -4,7 +4,8 @@ const BLOCK_TOKENS = Object.freeze({
     "HEADER": 0,
     "PARAGRAPH": 1,
     "HR": 2,
-    "NONE": 3
+    "BLOCK_QUOTE":3,
+    "NONE": 4
 });
 
 
@@ -31,11 +32,11 @@ const INLINE_TOKENS = Object.freeze({
 
 
 const BLOCK_MAP = new Map(
-    [[
-    BLOCK_TOKENS.HEADER, "#"
-    ],
-    [BLOCK_TOKENS.HR, "-"]
-]
+    [
+    [BLOCK_TOKENS.HEADER, "#"],
+    [BLOCK_TOKENS.HR, "-"],
+    [BLOCK_TOKENS.BLOCK_QUOTE, ">"]
+    ]
 )
 
 
@@ -93,6 +94,8 @@ export function renderHTML(blocks) {
 
     function renderBlock(block) {
 
+        console.log(block);
+
         switch (block.token) {
 
             case BLOCK_TOKENS.HEADER:
@@ -104,6 +107,9 @@ export function renderHTML(blocks) {
 
             case BLOCK_TOKENS.HR: 
                 return `<hr>`
+
+            case BLOCK_TOKENS.BLOCK_QUOTE: 
+                return `<blockquote>${block.childs.flat().map(renderBlock).join("")}</blockquote>`
 
             default:
                 return "";
@@ -132,6 +138,7 @@ export default class Markdown{
         this.index++;
         this.current_char = this.source[this.index];
     }
+
 
     parse(){
 
@@ -232,6 +239,24 @@ export default class Markdown{
         
     }
 
+    parseBlockQuote(){
+
+        this.trimLeft();
+
+        let childs = [];
+
+        while(this.isBlockToken(this.current_char) == BLOCK_TOKENS.BLOCK_QUOTE){
+            this.nextChar(); // >
+            this.trimLeft();
+
+            childs.push(this.parseBlock());
+        }
+
+        return {type: 'block', token: BLOCK_TOKENS.BLOCK_QUOTE, childs: childs}
+
+
+    }
+
     parseBlock(){
         this.trimLeft();
 
@@ -253,9 +278,12 @@ export default class Markdown{
                 }
 
             
-            default: 
+            case BLOCK_MAP.get(BLOCK_TOKENS.BLOCK_QUOTE):
+                return this.parseBlockQuote();
 
-                return this.parseParagraph()
+            
+            default: 
+                return this.parseParagraph();
         }
 
 
@@ -346,7 +374,6 @@ export default class Markdown{
     }
 
     parseInline(){
-        let x = "";
         let inlines = [];
 
 

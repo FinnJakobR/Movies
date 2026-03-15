@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./assets/logos.gif" type="image/gif" >
+
+      <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.181.2/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.181.2/examples/jsm/"
+        }
+      }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.1/dist/gsap.min.js"></script>
+
+
+
+
+    <script src="./perlin.js"></script>
+    <script src="./script.js" type="module" defer></script>
+    <script src="./data.js" type="module" defer></script>
+    <script src="./transition.js" type="module" defer></script>
+    <script src="./background.js" type="module" defer></script>
+    <script src = "./shader.js" type="module" defer></script>
+    <script src="./search.js" type="module" defer></script>
+    <script src="./api.js" type="module" defer></script>
+    <title>Finnematic</title>
+</head>
+<body>
+
+    <div id="selection_overlay"></div>
+    <div id="loading">
+        <img src="/assets/loading/loading.gif" alt="">
+    </div>
+
+    <div id="landing">
+        <div id="search">
+            <span style="-webkit-transform: rotate(45deg); -moz-transform: rotate(45deg); -o-transform: rotate(45deg);transform: rotate(45deg);">&#9906;</span>
+        
+        <input type="text" id="search_value"  autocomplete="off">
+
+        </div>
+        <div id="film_names"></div>
+    </div>
+
+    <div id="film" style="display: none;">
+        <div id="title">
+            <div>
+                <span id="back_button">×</span>
+                <span id="title_text">Bugonia</span>
+            </div>
+            <span id="next_film_button">-></span>
+        </div>
+        <div id="main">
+            
+            <div id="infos">
+                <div id="infos_header">
+
+                    <div class="infos_text" id="release_date">
+                        Tuesday / 12.02
+                    </div>
+
+                    <div class="infos_text" id="runtime">
+                        00:04:21
+                    </div>
+                </div>
+
+                <div id="infos_main">
+                    <div id="film_infos">
+                        <div class="infos_main_text" id="year"><span><a>2020</a></span></div>
+                        <div class="infos_main_text" id="Director"><span><a>Mister Cool</a></span></div>
+                    <div class="infos_main_text" id="tags">
+                        <div><a class="tag_url">Drama</a></div>
+                    </div>
+                    
+                    </div>
+                    <div class="infos_main_text" id="story">
+                    <p>
+                    Michelle Fuller, Chefin des großen Pharmaunternehmens Auxolith, wird von Teddy Gatz und dessen Cousin Don entführt. Teddy ist überzeugt, dass Michelle zu einer gefährlichen außerirdischen Gruppe gehört – den sogenannten „Andromedanern“. Diese Wesen, so glaubt er, wollen die Bienen auf der Erde vernichten, Gemeinschaften zerstören und die Menschen dazu bringen, sich ihnen willenlos zu unterwerfen.
+                    </p>
+                    </div>
+                
+                </div>
+
+            </div>
+
+            <div id="article_infos">
+
+                 <div class="infos_text" id="article_title">
+                                Warum Barbie der beste film ever ist
+                            </div>
+        <div class="infos_text" id="film_rating">
+                                4 / 10
+                </div>
+                    <!-- <div id="article_button">
+                        <div id="button_title">Article</div>
+                        <div id = "button_background_animation"></div>
+                    </div> -->
+
+    
+            </div>
+            <div id="article">
+                <div class="infos_main_text">
+Man kann diesen Film sehr gut mit einem Zitat anfangen lassen:
+"Ich hatte keinerlei Erwartung und wurde trotzdem enttäuscht!" (Axel Heck, The Middle).
+
+Dieser Film hat mich nicht nur enttäuscht, sondern auch wütend gemacht, da er als ein Beispiel für die Industrialisierung des Filmes steht.
+Früher noch eine Form von Kunst, kriegen wir heute immer denselben Müll hingehauen. Jason Statham spawnt mit irgendeinem Beruf und hat plötzlich auch noch Superkräfte nebenbei. Wirklich Superkräfte – seine Superkraft sind erstens Dialoge aus der Hölle und zweitens, dass die Gegner einen Schlaganfall bekommen und dadurch immer daneben schießen.
+Des Weiteren ist diese Person auch immer ganz plötzlich in Mafia-Angelegenheiten verstrickt – ganz normal halt. Natürlich sind es die Russen.
+
+Ja, ich weiß, man sollte bei fiktiven Geschichten nicht alles auf die Goldwaage legen, so wie ich es gemacht habe. Aber sind wir doch mal ehrlich: Das hat doch nichts mehr mit Filmkunst zu tun. Eine Person, die sich einfach zwei Stunden wild durch alles ballert und ihre moralischen Grundwerte durch ein „Bitte“ komplett ändert.
+Der Film gibt dem Publikum auch nicht die Chance zu entscheiden, wer gut oder böse ist. Es ist von Anfang an klar, wer böse ist: die Mafia, die Frauen schlägt, Drogen verkauft usw. Und der Gute, der ein Mädchen aus den Zwängen befreit. Im ganzen Film gibt es keine Situation, in der man wirklich mit dem Protagonisten mitfiebert – sobald man ihn sieht, verschießen alle Personen.
+
+Zusammengefasst ist das Spannendste, welcher Statham-Geheimagent-/Berufssuperheld als Nächstes kommt. Beekeeper gab es schon, Accountant ist vergeben. Vielleicht „Policemen“ als neuer Filmname? Ich bin gespannt.
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+   
+
+</body>
+</html>
